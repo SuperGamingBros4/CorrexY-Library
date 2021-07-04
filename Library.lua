@@ -298,8 +298,10 @@ function Library:AddTab(Name)
 		Section.Position = UDim2.new(-0.0157480314, 0, 0.00287356321, 0)
 		Section.Size = UDim2.new(1, -6, 0, 0)
 		Section.ChildAdded:Connect(function(Obj)
-			Obj.ZIndex = ZIndex
-			ZIndex = ZIndex - 1
+            pcall(function()
+                Obj.ZIndex = ZIndex
+                ZIndex = ZIndex - 1
+            end)
 		end)
 
 		UIListLayout_3.Parent = Section
