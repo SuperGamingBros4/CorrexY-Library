@@ -50,7 +50,6 @@ local MainContainer = CreateObject("Frame", {
     ZIndex = 0
 })
 local Tabs = CreateObject("ScrollingFrame", {
-	Name = GetRandomName(),
 	Parent = MainContainer,
 	Active = true,
 	BackgroundColor3 = Color3.fromRGB(34, 31, 31),
@@ -63,7 +62,6 @@ local Tabs = CreateObject("ScrollingFrame", {
 
 local UIListLayout = CreateObject("UIListLayout", {
 	Parent = Tabs,
-	Name = GetRandomName(),
 	SortOrder = Enum.SortOrder.LayoutOrder,
 	Padding = UDim.new(0, 2)
 })
@@ -124,7 +122,6 @@ local SetGuiOpenKeyText = CreateObject("TextLabel", {
 })
 
 local SetGuiOpenKeyButton = CreateObject("TextButton", {
-	Name = GetRandomName(),
 	Parent = CorrexYv1,
 	BackgroundColor3 = Color3.fromRGB(39, 36, 36),
 	Position = UDim2.new(0.439849615, 0, 0.0687830672, 0),
@@ -181,7 +178,6 @@ local UICorner_5 = CreateObject("UICorner", {
 })
 
 local DestroyGUI = CreateObject("TextButton", {
-	Name = GetRandomName(),
 	Parent = CorrexYv1,
 	BackgroundColor3 = Color3.fromRGB(39, 36, 36),
 	Position = UDim2.new(0.263157904, 0, 0.230158716, 0),
@@ -247,7 +243,6 @@ function Library:AddTab(Name)
     })
 
     local TabButton = CreateObject("TextButton", {
-		Name = GetRandomName(),
 		Parent = Tab,
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		BackgroundTransparency = 1.000,
@@ -263,7 +258,6 @@ function Library:AddTab(Name)
     })
 
     local Tab_2 = CreateObject("ScrollingFrame", {
-		Name = GetRandomName(),
 		Parent = MainContainer,
 		Active = true,
         AutomaticCanvasSize = Enum.AutomaticSize.Y,
@@ -299,7 +293,6 @@ function Library:AddTab(Name)
     })
     
     local LeftSectionHolder = CreateObject("Frame", {
-		Name = GetRandomName(),
 		Parent = Tab_2,
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		BackgroundTransparency = 1.000,
@@ -314,7 +307,6 @@ function Library:AddTab(Name)
     })
 
     local RightSectionHolder = CreateObject("Frame", {
-		Name = GetRandomName(),
 		Parent = Tab_2,
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		BackgroundTransparency = 1.000,
@@ -389,7 +381,6 @@ function Library:AddTab(Name)
 			local Callback = Flags["Callback"] or function()end
 				
             local Button = CreateObject("TextButton", {
-				Name = GetRandomName(),
 				Parent = Section,
 				BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 				BackgroundTransparency = 1.000,
@@ -417,7 +408,6 @@ function Library:AddTab(Name)
 			Library.Flags[Flag] = false
 			
             local Toggle = CreateObject("TextButton", {
-				Name = GetRandomName(),
 				Parent = Section,
 				BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 				BackgroundTransparency = 1.000,
@@ -431,6 +421,21 @@ function Library:AddTab(Name)
 				TextWrapped = true,
 				TextXAlignment = Enum.TextXAlignment.Left
             })
+            
+            local Box = CreateObject("Frame", {
+				Parent = Toggle,
+				BackgroundColor3 = Color3.fromRGB(63, 62, 62),
+				BorderColor3 = Color3.fromRGB(48, 45, 45),
+				BorderSizePixel = 2,
+				Position = UDim2.new(-0.129999995, 0, 0.187999994, 0),
+				Size = UDim2.new(0, 20, 0, 20)
+            })
+
+            local UIPadding = CreateObject("UIPadding", {
+			    Parent = Toggle,
+			    PaddingLeft = UDim.new(0, 30)
+            })
+
 			Toggle.MouseButton1Click:Connect(function()
 				if Toggled then
 					Tween(Box, "Sine", "InOut", 0.1, {BackgroundColor3 = Color3.fromRGB(63, 62, 62)})
@@ -441,22 +446,6 @@ function Library:AddTab(Name)
 				Callback(Toggled)
 				Library.Flags[Flag] = Toggled
 			end)
-            
-            local Box = CreateObject("Frame", {
-				Name = GetRandomName(),
-				Parent = Toggle,
-				BackgroundColor3 = Color3.fromRGB(63, 62, 62),
-				BorderColor3 = Color3.fromRGB(48, 45, 45),
-				BorderSizePixel = 2,
-				Position = UDim2.new(-0.129999995, 0, 0.187999994, 0),
-				Size = UDim2.new(0, 20, 0, 20)
-            })
-            
-            local UIPadding = CreateObject("UIPadding", {
-			    Parent = Toggle,
-			    PaddingLeft = UDim.new(0, 30)
-            })
-			
 		end
 		
 		function Sections:AddDropDown(Flags)
@@ -476,7 +465,6 @@ function Library:AddTab(Name)
 			local dropped = false
 
             local DropDown = CreateObject("TextButton", {
-				Name = GetRandomName(),
 				Parent = Section,
 				BackgroundColor3 = Color3.fromRGB(58, 57, 57),
 				BorderColor3 = Color3.fromRGB(48, 45, 45),
@@ -493,7 +481,6 @@ function Library:AddTab(Name)
             })
 
             local Indicator = CreateObject("TextLabel", {
-				Name = GetRandomName(),
 				Parent = DropDown,
 				BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 				BackgroundTransparency = 1.000,
@@ -509,7 +496,6 @@ function Library:AddTab(Name)
             })
 
             local DropDownPart = CreateObject("ScrollingFrame", {
-				Name = GetRandomName(),
 				Parent = DropDown,
 				Active = true,
 				BackgroundColor3 = Color3.fromRGB(58, 57, 57),
@@ -564,7 +550,6 @@ function Library:AddTab(Name)
 					end
                     
                     local Toggle = CreateObject("TextButton", {
-						Name = GetRandomName(),
 						Parent = DropDownPart,
 						BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 						BackgroundTransparency = 1.000,
@@ -578,6 +563,21 @@ function Library:AddTab(Name)
 						TextWrapped = true,
 						TextXAlignment = Enum.TextXAlignment.Left
                     })
+
+                    local Box = CreateObject("Frame", {
+						Parent = Toggle,
+						BackgroundColor3 = Color3.fromRGB(63, 62, 62),
+						BorderColor3 = Color3.fromRGB(48, 45, 45),
+						BorderSizePixel = 2,
+						Position = UDim2.new(-0.129999995, 0, 0.187999994, 0),
+					    Size = UDim2.new(0, 20, 0, 20)
+                    })
+                    
+                    local UIPadding = CreateObject("UIPadding", {
+					    Parent = Toggle,
+					    PaddingLeft = UDim.new(0, 30)
+                    })
+
 					Toggle.MouseButton1Click:Connect(function()
 						if Toggled then
 							Tween(Box, "Sine", "InOut", 0.1, {BackgroundColor3 = Color3.fromRGB(63, 62, 62)})
@@ -590,25 +590,8 @@ function Library:AddTab(Name)
 						Toggled = not Toggled
 						Callback(v)
 					end)
-
-                    local Box = CreateObject("Frame", {
-						Name = GetRandomName(),
-						Parent = Toggle,
-						BackgroundColor3 = Color3.fromRGB(63, 62, 62),
-						BorderColor3 = Color3.fromRGB(48, 45, 45),
-						BorderSizePixel = 2,
-						Position = UDim2.new(-0.129999995, 0, 0.187999994, 0),
-					    Size = UDim2.new(0, 20, 0, 20)
-                    })
-
-                    local UIPadding = CreateObject("UIPadding", {
-					    Parent = Toggle,
-					    PaddingLeft = UDim.new(0, 30)
-                    })
-
 				else
                     local DropDownButton = CreateObject("TextButton", {
-						Name = GetRandomName(),
 						Parent = DropDownPart,
 						BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 						BackgroundTransparency = 1.000,
@@ -648,7 +631,6 @@ function Library:AddTab(Name)
 			local dropped = false
 
             local DropDown = CreateObject("TextButton", {
-				Name = GetRandomName(),
 				Parent = Section,
 				BackgroundColor3 = Color3.fromRGB(58, 57, 57),
 				BorderColor3 = Color3.fromRGB(48, 45, 45),
@@ -665,7 +647,6 @@ function Library:AddTab(Name)
             })
 
             local Indicator = CreateObject("TextLabel", {
-				Name = GetRandomName(),
 				Parent = DropDown,
 				BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 				BackgroundTransparency = 1.000,
@@ -681,7 +662,6 @@ function Library:AddTab(Name)
             })
 
             local DropDownPart = CreateObject("ScrollingFrame", {
-				Name = GetRandomName(),
 				Parent = DropDown,
 				Active = true,
 				BackgroundColor3 = Color3.fromRGB(58, 57, 57),
@@ -750,7 +730,6 @@ function Library:AddTab(Name)
 					local Toggled = false
                     
                     local Toggle = CreateObject("TextButton", {
-						Name = GetRandomName(),
 						Parent = DropDownPart,
 						BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 						BackgroundTransparency = 1.000,
@@ -764,6 +743,21 @@ function Library:AddTab(Name)
 						TextWrapped = true,
 						TextXAlignment = Enum.TextXAlignment.Left
                     })
+                    
+                    local Box = CreateObject("Frame", {
+						Parent = Toggle,
+						BackgroundColor3 = Color3.fromRGB(63, 62, 62),
+						BorderColor3 = Color3.fromRGB(48, 45, 45),
+						BorderSizePixel = 2,
+						Position = UDim2.new(-0.129999995, 0, 0.187999994, 0),
+						Size = UDim2.new(0, 20, 0, 20)
+                    })
+                    
+                    local UIPadding = CreateObject("UIPadding", {
+						Parent = Toggle,
+						PaddingLeft = UDim.new(0, 30)
+                    })
+
 					Toggle.MouseButton1Click:Connect(function()
 						if Toggled then
 							Tween(Box, "Sine", "InOut", 0.1, {BackgroundColor3 = Color3.fromRGB(63, 62, 62)})
@@ -777,25 +771,9 @@ function Library:AddTab(Name)
 						Callback(Player)
 					end)
 
-                    local Box = CreateObject("Frame", {
-						Name = GetRandomName(),
-						Parent = Toggle,
-						BackgroundColor3 = Color3.fromRGB(63, 62, 62),
-						BorderColor3 = Color3.fromRGB(48, 45, 45),
-						BorderSizePixel = 2,
-						Position = UDim2.new(-0.129999995, 0, 0.187999994, 0),
-						Size = UDim2.new(0, 20, 0, 20)
-                    })
-                    
-                    local Box = CreateObject("UIPadding", {
-						Parent = Toggle,
-						PaddingLeft = UDim.new(0, 30)
-                    })
-
 				else
 
                     local DropDownButton = CreateObject("TextButton", {
-						Name = GetRandomName(),
 						Parent = DropDownPart,
 						BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 						BackgroundTransparency = 1.000,
@@ -854,7 +832,6 @@ function Library:AddTab(Name)
 			Library.Flags[Flag] = math.floor(Default)
 
             local SliderHolder = CreateObject("Frame", {
-				Name = GetRandomName(),
 				Parent = Section,
 				BackgroundColor3 = Color3.fromRGB(57, 57, 57),
 				BorderColor3 = Color3.fromRGB(48, 45, 45),
@@ -864,7 +841,6 @@ function Library:AddTab(Name)
             })
 
             local SliderFill = CreateObject("Frame", {
-				Name = GetRandomName(),
 				Parent = SliderHolder,
 				BackgroundColor3 = Color3.fromRGB(197, 33, 33),
 				BorderSizePixel = 0,
@@ -872,7 +848,6 @@ function Library:AddTab(Name)
             })
 
             local Slider = CreateObject("TextButton", {
-				Name = GetRandomName(),
 				Parent = SliderFill,
 				BackgroundColor3 = Color3.fromRGB(57, 57, 57),
 				BackgroundTransparency = 1.000,
