@@ -4,7 +4,7 @@ local RS = game:GetService("RunService")
 
 local function GetRandomName() -- Random Naming function
 	local Name = "" -- Define a name variable
-	for i = 1, math.random(10, 100) do -- Chooses a random length beetween 10 characters and 100
+	for i = 1, math.random(10, 25) do -- Chooses a random length beetween 10 characters and 25
 		Name = Name .. string.char(math.random(33, 126)) -- Randomly choose a character in a broad range
 	end
 	return Name -- Return the name
@@ -332,14 +332,14 @@ function Library:AddTab(Name)
 	function Tabs:AddSection(Name)
         
         local Section = CreateObject("Frame", {
-            	BackgroundColor3 = Color3.fromRGB(63, 62, 62),
-            	BorderColor3 = Color3.fromRGB(54, 50, 50),
-            	Position = UDim2.new(-0.0157480314, 0, 0.00287356321, 0),
-            	Size = UDim2.new(1, -6, 0, 0)
+            BackgroundColor3 = Color3.fromRGB(63, 62, 62),
+            BorderColor3 = Color3.fromRGB(54, 50, 50),
+            Position = UDim2.new(-0.0157480314, 0, 0.00287356321, 0),
+            Size = UDim2.new(1, -6, 0, 0)
         })
-		Section.Parent = LeftSectionHolder
-		if UIListLayout_2.AbsoluteContentSize.Y > UIListLayout_5.AbsoluteContentSize.Y then
-			Section.Parent = RightSectionHolder
+		Section.Parent = RightSectionHolder
+		if UIListLayout_5.AbsoluteContentSize.Y > UIListLayout_2.AbsoluteContentSize.Y then
+			Section.Parent = LeftSectionHolder
 		end
 
 		Section.ChildAdded:Connect(function(Obj)
@@ -591,7 +591,7 @@ function Library:AddTab(Name)
 						Callback(v)
 					end)
 
-                    local Box = CreateObject("TextButton", {
+                    local Box = CreateObject("Frame", {
 						Name = GetRandomName(),
 						Parent = Toggle,
 						BackgroundColor3 = Color3.fromRGB(63, 62, 62),
@@ -601,7 +601,7 @@ function Library:AddTab(Name)
 					    Size = UDim2.new(0, 20, 0, 20)
                     })
 
-                    local UIPadding = CreateObject("TextButton", {
+                    local UIPadding = CreateObject("UIPadding", {
 					    Parent = Toggle,
 					    PaddingLeft = UDim.new(0, 30)
                     })
@@ -746,9 +746,6 @@ function Library:AddTab(Name)
 			local function AddPlayer(Player)
 				local Player = Player.Name
 				if MultiSelect then
-
-					local Box = Instance.new("Frame")
-					local UIPadding_3 = Instance.new("UIPadding")
 
 					local Toggled = false
                     
