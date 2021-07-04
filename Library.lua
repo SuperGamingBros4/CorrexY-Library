@@ -538,10 +538,10 @@ function Library:AddTab(Name)
 					Toggle.MouseButton1Click:Connect(function()
 						if Toggled then
 							Tween(Box, "Sine", "InOut", 0.1, {BackgroundColor3 = Color3.fromRGB(63, 62, 62)})
-							table.insert(Library.Flags[Flag], v)
+							table.remove(Library.Flags[Flag], table.find(Library.Flags[Flag], v))
 						else
 							Tween(Box, "Sine", "InOut", 0.1, {BackgroundColor3 = Color3.fromRGB(197, 33, 33)})
-							table.remove(Library.Flags[Flag], table.find(Library.Flags[Flag], v))
+							table.insert(Library.Flags[Flag], v)
 						end
 						SetText()
 						Toggled = not Toggled
@@ -717,10 +717,10 @@ function Library:AddTab(Name)
 					Toggle.MouseButton1Click:Connect(function()
 						if Toggled then
 							Tween(Box, "Sine", "InOut", 0.1, {BackgroundColor3 = Color3.fromRGB(63, 62, 62)})
-							table.insert(Library.Flags[Flag], Player)
+							table.remove(Library.Flags[Flag], table.find(Library.Flags[Flag], Player))
 						else
 							Tween(Box, "Sine", "InOut", 0.1, {BackgroundColor3 = Color3.fromRGB(197, 33, 33)})
-							table.remove(Library.Flags[Flag], table.find(Library.Flags[Flag], Player))
+							table.insert(Library.Flags[Flag], Player)
 						end
 						SetText()
 						Toggled = not Toggled
