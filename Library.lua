@@ -673,9 +673,9 @@ function Library:AddTab(Name)
 				end
 				for i,v in pairs(Library.Flags[Flag]) do
 					if i == 1 then
-						DropDown.text = v
+						DropDown.Text = v
 					end
-					DropDown.text =  DropDown.Text .. ", " .. v
+					DropDown.Text =  DropDown.Text .. ", " .. v
 				end
 			end
 			
