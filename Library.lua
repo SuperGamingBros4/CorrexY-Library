@@ -544,8 +544,9 @@ function Library:AddTab(Name)
 						for i,v in pairs(Library.Flags[Flag]) do
 							if i == 1 then
 								DropDown.text = v
-							end
-							DropDown.text =  DropDown.Text .. ", " .. v
+                            else
+                                DropDown.Text =  DropDown.Text .. ", " .. v
+                            end
 						end
 					end
                     
@@ -705,8 +706,9 @@ function Library:AddTab(Name)
 				for i,v in pairs(Library.Flags[Flag]) do
 					if i == 1 then
 						DropDown.Text = v
-					end
-					DropDown.Text =  DropDown.Text .. ", " .. v
+                    else
+					    DropDown.Text =  DropDown.Text .. ", " .. v
+                    end
 				end
 			end
 			
