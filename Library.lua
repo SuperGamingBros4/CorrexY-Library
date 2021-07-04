@@ -214,6 +214,8 @@ function Library:AddTab(Name)
 	local UICorner_3 = Instance.new("UICorner")
 	local TabButton = Instance.new("TextButton")
 	local Tab_2 = Instance.new("ScrollingFrame")
+    local UIPadding = Instance.new("UIPadding")
+    local UIListLayout = Instance.new("UIListLayout")
 	local LeftSectionHolder = Instance.new("Frame")
 	local UIListLayout_2 = Instance.new("UIListLayout")
 	local RightSectionHolder = Instance.new("Frame")
@@ -255,8 +257,22 @@ function Library:AddTab(Name)
 	Tab_2.Size = UDim2.new(0, 533, 0, 376)
 	Tab_2.CanvasSize = UDim2.new(0, 0, 0, 0)
 	Tab_2.Visible = false
+    Tab_2.ScrollingEnabled = true
 	Tab_2.ScrollBarThickness = 8
-	Tab_2.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    local d
+    d = game:GetService("RunService").RenderStepped:Connect(function()
+        Tab_2.CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y)
+        if not (Tab_2) then
+            d:Disconnect()
+        end
+    end)
+
+    UIPadding.Parent = Tab_2
+    UIPadding.PaddingLeft = UDim.new(0, 13)
+
+    UIListLayout.Parent = Tab_2
+    UIListLayout.Padding = UDim.new(0,5)
+    UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 
 	LeftSectionHolder.Name = "LeftSectionHolder"
 	LeftSectionHolder.Parent = Tab_2
