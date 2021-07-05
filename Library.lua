@@ -329,30 +329,23 @@ function Library:AddTab(Name)
             Position = UDim2.new(-0.0157480314, 0, 0.00287356321, 0),
             Size = UDim2.new(1, -6, 0, 0)
         })
+        local UIListLayout = CreateObject("UIListLayout", {
+            Parent = Section,
+            HorizontalAlignment = Enum.HorizontalAlignment.Center,
+            SortOrder = Enum.SortOrder.LayoutOrder,
+            Padding = UDim.new(0, 7)
+        })
 		Section.Parent = LeftSectionHolder
 		if UIListLayout_5.AbsoluteContentSize.Y < UIListLayout_2.AbsoluteContentSize.Y then
 			Section.Parent = RightSectionHolder
 		end
+		Section.Size = UDim2.new(1, -6, 0, UIListLayout.AbsoluteContentSize.Y + 10)
 
 		Section.ChildAdded:Connect(function(Obj)
             pcall(function()
                 Obj.ZIndex = ZIndex
                 ZIndex = ZIndex - 1
             end)
-		end)
-		
-        local UIListLayout_3 = CreateObject("UIListLayout", {
-            	Parent = Section,
-            	HorizontalAlignment = Enum.HorizontalAlignment.Center,
-            	SortOrder = Enum.SortOrder.LayoutOrder,
-            	Padding = UDim.new(0, 7)
-        })
-		local c 
-		c = RS.RenderStepped:Connect(function()
-			Section.Size = UDim2.new(1, -6, 0, UIListLayout_3.AbsoluteContentSize.Y + 10)
-			if not Section.Parent then
-				c:Disconnect()
-			end
 		end)
 
         local UICorner_4 = CreateObject("UICorner", {
@@ -812,6 +805,7 @@ function Library:AddTab(Name)
 		
 		function Sections:AddSlider(Flags)
             local Flags = Flags or {}
+			local Color = Flags["Color"] or Color3.fromRGB(197,33,33)
 			local Min = Flags["Min"] or 0
 			local Max = Flags["Max"] or 100
 			local Default = Flags["Default"] or Min
@@ -827,8 +821,7 @@ function Library:AddTab(Name)
 			end
 			
 			local held = false
-			local OldSize = snap(1/(Max/(Default-Min)), 1/Max)
-			
+			local OldSize = snap(Default/Max, 1/Max)
 			Library.Flags[Flag] = math.floor(Default)
 
             local SliderHolder = CreateObject("Frame", {
@@ -875,9 +868,9 @@ function Library:AddTab(Name)
 
 			RS.RenderStepped:Connect(function()
 				if held then
-					local MousePos = UIS:GetMouseLocation().X
-					local SliderSize = SliderHolder.AbsoluteSize.X
-					local SliderPos = SliderHolder.AbsolutePosition.X
+					local MousePos = UIS:GetMouseLocation().X -- Get The MousePosition
+					local SliderSize = SliderHolder.AbsoluteSize.X -- Get The Slider Box Size
+					local SliderPos = SliderHolder.AbsolutePosition.X -- Get The Slider Box Position
 					local snapped = snap((MousePos-SliderPos)/SliderSize, 1/Max)
 					local percentage = math.clamp(snapped, 0, 1)
 					local Size = UDim2.new(percentage, 0, SliderFill.Size.Y.Scale, SliderFill.Size.Y.Offset)
@@ -891,9 +884,15 @@ function Library:AddTab(Name)
 				end
 			end)
 		end
-		Section.Size = UDim2.new(1, -6, 0, UIListLayout_3.AbsoluteContentSize.Y)
-		return Sections
+		local c -- Create c as its own variable without asigning it something, for accessing itself.
+		c = RS.RenderStepped:Connect(function() -- Asign c a renderstepped connection
+			Section.Size = UDim2.new(1, -6, 0, UIListLayout.AbsoluteContentSize.Y + 10) -- Readjust the size of the section
+			if not Section.Parent then
+				c:Disconnect() -- If the Section is parented to nil then Disconnect c.
+			end
+		end)
+		return Sections -- return the table,  Sections
 	end
-	return Tabs
+	return Tabs -- return the table,  Tabs
 end
-return Library
+return Library -- return the table,  Library
