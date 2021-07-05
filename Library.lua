@@ -153,7 +153,8 @@ local KeyBlacklist = {
 	[Enum.KeyCode.Slash] = true,
 	[Enum.KeyCode.F9] = true,
 	[Enum.KeyCode.LeftShift] = true,
-	[Enum.KeyCode.RightShift] = true
+	[Enum.KeyCode.RightShift] = true,
+	[Enum.KeyCode.Backquote] = true
 }
 game:GetService("UserInputService").InputBegan:Connect(function(Input)
 	if Input.UserInputType == Enum.UserInputType.Keyboard then
