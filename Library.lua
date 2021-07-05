@@ -329,9 +329,9 @@ function Library:AddTab(Name)
             Position = UDim2.new(-0.0157480314, 0, 0.00287356321, 0),
             Size = UDim2.new(1, -6, 0, 0)
         })
-		Section.Parent = RightSectionHolder
-		if UIListLayout_5.AbsoluteContentSize.Y > UIListLayout_2.AbsoluteContentSize.Y then
-			Section.Parent = LeftSectionHolder
+		Section.Parent = LeftSectionHolder
+		if UIListLayout_5.AbsoluteContentSize.Y < UIListLayout_2.AbsoluteContentSize.Y then
+			Section.Parent = RightSectionHolder
 		end
 
 		Section.ChildAdded:Connect(function(Obj)
