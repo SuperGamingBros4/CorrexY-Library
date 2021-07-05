@@ -329,10 +329,9 @@ function Library:AddTab(Name)
             Position = UDim2.new(-0.0157480314, 0, 0.00287356321, 0),
             Size = UDim2.new(1, -6, 0, 0)
         })
-
-		Section.Parent = LeftSectionHolder
-		if UIListLayout_2.AbsoluteContentSize.Y > UIListLayout_5.AbsoluteContentSize.Y then
-			Section.Parent = RightSectionHolder
+		Section.Parent = RightSectionHolder
+		if UIListLayout_5.AbsoluteContentSize.Y > UIListLayout_2.AbsoluteContentSize.Y then
+			Section.Parent = LeftSectionHolder
 		end
 
 		Section.ChildAdded:Connect(function(Obj)
@@ -545,9 +544,8 @@ function Library:AddTab(Name)
 						for i,v in pairs(Library.Flags[Flag]) do
 							if i == 1 then
 								DropDown.text = v
-                            else
-                                DropDown.Text =  DropDown.Text .. ", " .. v
-                            end
+							end
+							DropDown.text =  DropDown.Text .. ", " .. v
 						end
 					end
                     
@@ -707,9 +705,8 @@ function Library:AddTab(Name)
 				for i,v in pairs(Library.Flags[Flag]) do
 					if i == 1 then
 						DropDown.Text = v
-                    else
-					    DropDown.Text =  DropDown.Text .. ", " .. v
-                    end
+					end
+					DropDown.Text =  DropDown.Text .. ", " .. v
 				end
 			end
 			
