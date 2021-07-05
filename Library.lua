@@ -821,7 +821,7 @@ function Library:AddTab(Name)
 			end
 			
 			local held = false
-			local OldSize = snap(Default/Max, 1/Max)
+			local OldSize = snap((Default-Min)/Max, 1/Max)
 			Library.Flags[Flag] = math.floor(Default)
 
             local SliderHolder = CreateObject("Frame", {
@@ -848,7 +848,6 @@ function Library:AddTab(Name)
 				BorderSizePixel = 2,
 				Size = UDim2.new(0, 237, 0, 32),
 				Font = Enum.Font.SourceSans,
-				Text = "Name: Value",
 				TextColor3 = Color3.fromRGB(255, 255, 255),
 				TextScaled = true,
 				TextSize = 14.000,
